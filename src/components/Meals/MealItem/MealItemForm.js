@@ -9,14 +9,12 @@ const MealItemForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //브라우저가 재로딩하는것을 예방하는 것
 
     const enteredAmount = amountInputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
 
-    const addToCartHandler = (amount) => {};
     if (
-      enteredAmount.trim.length === 0 ||
+      enteredAmount.trim().length === 0 ||
       enteredAmountNumber < 1 ||
       enteredAmountNumber > 5
     ) {
@@ -33,16 +31,16 @@ const MealItemForm = (props) => {
         ref={amountInputRef}
         label="Amount"
         input={{
-          id: "amount" + props.id,
+          id: "amount_" + props.id,
           type: "number",
           min: "1",
-          max: "10",
+          max: "5",
           step: "1",
           defaultValue: "1",
         }}
       />
-      <button>Add</button>
-      {!amountIsValid && <p>Please enter a valid amount (1 - 5).</p>}
+      <button>+ Add</button>
+      {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
     </form>
   );
 };
